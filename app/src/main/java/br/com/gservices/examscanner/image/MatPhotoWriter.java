@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import org.jcodec.api.SequenceEncoder;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 
@@ -40,11 +41,11 @@ public class MatPhotoWriter {
 
             for(File f : files){
                 Log.i("VideoTest", "Encoding image: " + f.getAbsolutePath());
+
                 try{
                     Bitmap frame = BitmapFactory.decodeFile(f.getAbsolutePath());
-                    encoder.encodeImage(frame);
-                }
-                catch(Exception e){
+                    encoder.encodeNativeFrame(frame);
+                } catch(Exception e){
                     e.printStackTrace();
                 }
 
